@@ -1,0 +1,65 @@
+.statistics {
+    width: 90%;
+    display: grid;
+    gap: 2rem;
+
+    .chart {
+        display: grid;
+        align-items: center;
+        gap: 1rem;
+
+        .chart-data {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            
+        }
+    }
+
+    .consecutive-numbers {
+        display: grid;
+        gap: 1rem;
+
+        .header {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .numbers-sequency {
+            display: flex;
+            justify-content: center ;
+            align-items: center;
+            gap: 1rem;
+
+            .x {
+                font-size: 1.25rem;
+                font-weight: 700;
+            }
+
+            .times {
+                font-size: 1.2rem;
+            }
+
+            .numbers-pair {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                color: #8e5ea2;
+
+                .number {
+                    display: grid;
+                    align-items: center;
+                    width: 2rem;
+                    height: 2rem;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    border: 2px solid #8e5ea2;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}
