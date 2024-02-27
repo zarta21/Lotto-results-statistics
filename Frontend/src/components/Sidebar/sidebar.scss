@@ -1,0 +1,181 @@
+.navbar {
+    position: relative;
+    padding: 1rem;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: #ffffff4d;
+    font-size: 1.25rem;
+
+    #toggle-btn {
+        display: block;
+        height: 25px;
+        width: 25px;
+        opacity: 0;
+        z-index: 900;
+    }
+
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 30px;
+        cursor: pointer;
+
+        .menu-btn {
+            position: absolute;
+            display: block;
+            background-color: #151515;
+            height: 2px;
+            width: 20px;
+            margin-top: -25px;
+            border-radius: 2px;
+            transition: transform 400ms cubic-bezier(0.23, 1, 0.320, 1);
+
+            &::before {
+                content: '';
+                margin-top: -8px;
+                position: absolute;
+                display: block;
+                background-color: #151515;
+                height: 2px;
+                width: 20px;
+                border-radius: 2px;
+                transition: transform 400ms cubic-bezier(0.23, 1, 0.320, 1);
+            }
+
+            &::after {
+                content: '';
+                margin-top: 8px;
+                position: absolute;
+                display: block;
+                background-color: #151515;
+                height: 2px;
+                width: 20px;
+                border-radius: 2px;
+                transition: transform 400ms cubic-bezier(0.23, 1, 0.320, 1);
+            }
+        }
+    }
+
+    .nav-list {
+        display: grid;
+        gap: 1rem;
+        position: absolute;
+        list-style-type: none;
+        top: 3.9rem;
+        left: 0;
+        right: 0;
+        margin: 0;
+        padding: 0;
+        z-index: 100;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0 1rem;
+            padding: .5rem 0;
+            overflow: hidden;
+            cursor: pointer;
+
+            span {
+                font-weight: 700;
+            }
+        }
+    }
+
+    #toggle-btn:checked+.btn-container .menu-btn::before {
+        margin-top: -5px;
+        transform: rotate(405deg);
+    }
+
+    #toggle-btn:checked+.btn-container .menu-btn {
+        background: rgba(255, 255, 255, 0);
+    }
+
+    #toggle-btn:checked+.btn-container .menu-btn::after {
+        margin-top: -5px;
+        transform: rotate(-405deg);
+    }
+
+    #toggle-btn~.nav-list li {
+        height: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+
+        &:not(.active):hover {
+            color: #818cf8;
+        }
+    }
+
+    #toggle-btn:checked~.nav-list {
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        background: #ffffff4d;
+        z-index: 100;
+    }
+
+    #toggle-btn:checked~.nav-list li {
+        height: 2.5em;
+        padding: .5em;
+        z-index: 100;
+        transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #e2e2e2;
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .navbar {
+        position: fixed;
+        left: 0;
+        height: 100vh;
+        padding-block: 2rem;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        background: #ffffff4d;
+
+        #toggle-btn {
+            display: none;
+        }
+        
+        .btn-container {
+            display: none;
+        }
+    
+        .nav-list {
+            position: relative;
+            top: 0;
+            z-index: -1;
+    
+            li {
+                overflow: visible;
+    
+                span {
+                    font-weight: 400;
+                    font-size: 1.25rem;
+                }
+            }
+    
+            .active {
+                display: block;
+                background: linear-gradient(to bottom right, #ddd6fe, #818cf8);
+                position: relative;
+                z-index: -1;
+                border-radius: 100vw 0 0 100vw;
+            }
+        }
+
+        #toggle-btn~.nav-list li {
+            height: auto;
+            padding: .7rem .5rem;
+        }
+    }
+}
