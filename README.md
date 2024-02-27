@@ -2,7 +2,7 @@
 
 This project allows users to view and analyze Viking Lotto and EuroJackpot Lotto results, providing insights into number frequency, consecutive number pairs, hot and cold numbers, common number ranges, and changes in the sum of numbers for each game.
 
-<img src="./frontend/public/lottery.jpg" />
+<img src="./Frontend/public/lottery.jpg" />
 
 ### [Try Lotto Statistics](https://65de077b9069d8008d09c2c8--frabjous-pegasus-105f19.netlify.app/)
 
