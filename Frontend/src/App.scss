@@ -1,0 +1,85 @@
+
+.App {
+    text-align: center;
+    background-image: linear-gradient(to bottom right, #ddd6fe, #818cf8);
+    min-height: 100vh;
+    margin: 0;
+    color: #000;
+    transition: all .3s ease-in-out;
+    overflow: clip;
+
+    .wrapper {
+        max-width: 1500px;
+
+        .left {
+            flex: 1;
+        }
+    
+        .right {
+            flex: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .select-data {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+
+            span {
+                font-weight: 700;
+            }
+        }
+
+        p {
+            text-align: left;
+            font-size: 1.125rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .info {
+            display: grid;
+            gap: 2rem;
+
+            span {
+                font-size: 1rem;
+                line-height: 1.5;
+                font-weight: 600;
+            }
+        }
+
+        .select {
+            min-width: 7ch;
+            max-width: 15ch;
+            padding: .5rem;
+            margin: 0;
+            outline: none;
+            color: #000;
+            font-size: .9rem;
+            cursor: pointer;
+            line-height: 1.1;
+        }
+    }
+}
+
+@media (min-width: 1000px) {
+    .App {
+        .wrapper {
+            display: flex;
+
+            .select-data {
+                flex-direction: row;
+            }
+
+            .info {
+                span {
+                    font-size: 1.125rem;
+                }
+            }
+            
+        }
+    }    
+}
