@@ -1,0 +1,80 @@
+.frequency {
+    width: 90%;
+    display: grid;
+    gap: 2rem;
+
+    .chart {
+        display: grid;
+        align-items: center;
+        width: 100%;
+    }
+
+    .numbers-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+
+        .description {
+            p {
+                text-align: left;
+                font-size: 1.125rem;
+                line-height: 1.5;
+            }
+        }
+
+        .hot-cold-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            .number {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        
+                .unique-number {
+                    display: grid;
+                    align-items: center;
+                    width: 3rem;
+                    height: 3rem;
+                    font-size: 1.25rem;
+                    font-weight: 700;
+                    border: 2px solid #000;
+                    border-radius: 50%;
+                }
+        
+                .number-frequency {
+                    position: absolute;
+                    top: -20%;
+                    right: -20%;
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    font-size: .8rem;
+                    display: grid;
+                    align-items: center;
+                    color: #fff;
+                    border-radius: 50%;
+                    background: #000;
+                }
+
+                .hot {
+                    background-color: #FE433C;
+                }
+
+                .warm {
+                    background-color: #F31D64;
+                }
+
+                .cold {
+                    background-color: #3C50B1
+                }
+
+                .freeze {
+                    background-color : #0095EF;
+                }
+            }
+        }
+
+       
+    }
+}
