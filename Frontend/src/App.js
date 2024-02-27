@@ -14,7 +14,6 @@ export const AppContext = createContext()
 
 function App() {
 
-  // const []
   const [data, setData] = useState([])
   const [blurBackground, setBlurBackground] = useState(true)
   const [activeTab, setActiveTab] = useState(0)
@@ -32,17 +31,6 @@ function App() {
       .then(res => {return res.json()})
       .then(dbData => setData(dbData))
       .catch(err => console.log(err))
-
-
-    // const fetchData = async () => {
-    //   const res = await fetch(`http://localhost:5000/${endpoint}`)
-    //   const numbers = await res.json()
-      
-    //   if (res.ok) {
-    //     setData(numbers)
-    //   }
-    // } 
-    // fetchData()
   }, [activeTab])
 
 
