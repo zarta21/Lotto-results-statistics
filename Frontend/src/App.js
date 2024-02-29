@@ -2,8 +2,6 @@ import { createContext, useEffect, useState } from 'react';
 import './App.scss';
 import Sidebar from './components/Sidebar/Sidebar';
 import TabView from './components/TabView/TabView';
-import { eurojackpotData } from './eurojackpot-data';
-import { vikingData } from './vikingData';
 import Results from './components/Results/Results';
 import Frequency from './components/NumbersFrequency/Frequency';
 import Statistics from './components/Statistics/Statistics';
@@ -29,8 +27,13 @@ function App() {
 
     fetch(`http://localhost:5500/${endpoint}`)
       .then(res => {return res.json()})
-      .then(dbData => setData(dbData))
-      .catch(err => console.log(err))
+      .then(dbData => setData(dbData.sort((a, b) => {
+                    const dateA = new Date(a.date.split('/').reverse().join('/'))
+                    const dateB = new Date(b.date.split('/').reverse().join('/'))
+
+                    return dateA - dateB
+                })))
+      .catch(err => alert(`Ups...\n${err.message}\n\nTry again later!`))
   }, [activeTab])
 
 
