@@ -3,7 +3,7 @@
     padding: 1rem;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    background: #ffffff4d;
+    background: var(--blur-background);
     font-size: 1.25rem;
 
     #toggle-btn {
@@ -26,7 +26,7 @@
         .menu-btn {
             position: absolute;
             display: block;
-            background-color: #151515;
+            background-color: var(--text-color);
             height: 2px;
             width: 20px;
             margin-top: -25px;
@@ -38,7 +38,7 @@
                 margin-top: -8px;
                 position: absolute;
                 display: block;
-                background-color: #151515;
+                background-color: var(--text-color);
                 height: 2px;
                 width: 20px;
                 border-radius: 2px;
@@ -50,7 +50,7 @@
                 margin-top: 8px;
                 position: absolute;
                 display: block;
-                background-color: #151515;
+                background-color: var(--text-color);
                 height: 2px;
                 width: 20px;
                 border-radius: 2px;
@@ -109,14 +109,14 @@
         transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
 
         &:not(.active):hover {
-            color: #818cf8;
+            color: var(--velvet-color);
         }
     }
 
     #toggle-btn:checked~.nav-list {
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
-        background: #ffffff4d;
+        background: var(--blur-background);
         z-index: 100;
     }
 
@@ -127,7 +127,7 @@
         transition: all 400ms cubic-bezier(0.23, 1, 0.32, 1);
 
         &:not(:last-child) {
-            border-bottom: 1px solid #e2e2e2;
+            border-bottom: 1px solid var(--menu-bottom-line-color);
         }
     }
 }
@@ -137,10 +137,12 @@
         position: fixed;
         left: 0;
         height: 100vh;
-        padding-block: 2rem;
+        padding: 0;
+        padding-left: 1.5rem;
+        padding-top: 2rem;
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
-        background: #ffffff4d;
+        background: var(--blur-background);
 
         #toggle-btn {
             display: none;
@@ -166,7 +168,7 @@
     
             .active {
                 display: block;
-                background: linear-gradient(to bottom right, #ddd6fe, #818cf8);
+                background: var(--body-background-color);
                 position: relative;
                 z-index: -1;
                 border-radius: 100vw 0 0 100vw;
