@@ -76,10 +76,10 @@ const Results = () => {
         let arr = []
         let yearsArr = []
         arr.push(context.data.map(item => item.date))
-        arr = [...new Set(arr.flat())]
+        arr = [...new Set(arr)]
         yearsArr.push(arr.flat(2).map(item => parseInt(item.split("/")[2], 10)))        
         
-        return [...new Set(arr.flat(2).map(item => new Date(item).toLocaleDateString("en-GB").split("/")[2]))]
+        return [...new Set(arr.flat(2).map(item => new Date(item.split('/').reverse().join('/')).toLocaleDateString("en-GB").split("/")[2]))]
     }
 
 
@@ -104,17 +104,17 @@ const Results = () => {
             </div>
             <div className="months select-data">
                 <h5>Month:</h5>
-                <select className='select' name="month" id="month" onChange={(e) => setDate({...date, month: e.target.value.split(" ")[0]})}>
+                <select className='select' name="month" id="month" onChange={(e) => setDate({...date, month: e.target.value})} defaultValue={date.month}>
                     {months.map((item, index) => (
-                        <option key={index} value={item} selected={date.month === item.split("")[0]}>{item}</option>
+                        <option key={index} value={item.split(" ")[0]}>{item}</option>
                     ))}
                 </select>
             </div>
             <div className="years select-data">
                 <h5>Year:</h5>
-                <select className='select' name="year" id="year" onChange={(e) => setDate({...date, year: e.target.value})}>
+                <select className='select' name="year" id="year" onChange={(e) => setDate({...date, year: e.target.value})} defaultValue={date.year}>
                     {getYears().toReversed().map((item, index) => (
-                        <option key={index} value={item} selected={date.year === item}>{item}</option>
+                        <option key={index} value={item}>{item}</option>
                     ))}
                 </select>
             </div>
