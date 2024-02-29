@@ -12,7 +12,7 @@
         & div {
             position: absolute;
             border-radius: 50%;
-            border: 6px solid #8e5ea2;
+            border: 6px solid var(--velvet-color);
             opacity: 1;
             animation: loader 1s cubic-bezier(0, .2, .8, 1) infinite;
         }
