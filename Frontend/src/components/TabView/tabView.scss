@@ -1,6 +1,6 @@
 .tabView {
     width: 95%;
-    max-width: 1500px;
+    max-width: var(--max-width);
     max-height: 90vh;
     max-height: 90dvh;
     margin: 1rem auto;
@@ -24,19 +24,19 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: #ffffff1d;
+                background: var(--tab-background);
                 height: 3rem;
                 padding: 1rem;
                 box-sizing: border-box;
-                color: #4b5563;
+                color: var(--tab-text-color);
                 cursor: pointer;
                 width: 100%;
             }
 
             .active-tab {
-                border-top: 3px solid #818cf8;
+                border-top: 3px solid var(--velvet-color);
                 color: #000;    
-                background: #ffffff4d;
+                background: var(--blur-background);
             }
 
             .tab-0 {
@@ -52,7 +52,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #ffffff4d;
+            background: var(--blur-background);
             border-radius: 0 .3rem .3rem .3rem;
             padding: 1rem;
             padding-bottom: 2rem;
