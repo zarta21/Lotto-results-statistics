@@ -39,7 +39,7 @@
                     height: 3rem;
                     font-size: 1.25rem;
                     font-weight: 700;
-                    border: 2px solid #000;
+                    border: 2px solid var(--text-color);
                     border-radius: 50%;
                 }
         
@@ -52,25 +52,25 @@
                     font-size: .8rem;
                     display: grid;
                     align-items: center;
-                    color: #fff;
+                    color: var(--white-color);
                     border-radius: 50%;
-                    background: #000;
+                    background: var(--text-color);
                 }
 
                 .hot {
-                    background-color: #FE433C;
+                    background-color: var(--hot-red-color);
                 }
 
                 .warm {
-                    background-color: #F31D64;
+                    background-color: var(--warm-red-color);
                 }
 
                 .cold {
-                    background-color: #3C50B1
+                    background-color: var(--cold-blue-color);
                 }
 
                 .freeze {
-                    background-color : #0095EF;
+                    background-color : var(--ice-cold-blue-color);
                 }
             }
         }
