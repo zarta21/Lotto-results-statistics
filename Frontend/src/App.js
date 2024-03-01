@@ -37,28 +37,17 @@ function App() {
   }, [activeTab])
 
 
-  const component = (
-    <> 
-      {category 
-        ? (
-            category === "Home" 
-              ? <Home /> 
-              : (category === "Results" 
-                  ? <Results /> 
-                  : (category === "Statistics"
-                      ? <Statistics />
-                      : (category === "Number Frequency"
-                          ? <Frequency />
-                          : <span>No data</span>
-                        )
-                    )
-                )
-          )
-        : <span>No data</span>
-      }
-        
-      </>
-  )  
+  const getContent = (category) => {
+  const content = {
+    "Home": <Home />,
+    "Results": <Results />,
+    "Statistics": <Statistics />,
+    "Number Frequency": <Frequency />,
+    default: <Home />
+  }
+
+  return content[category] ?? content.default
+}
 
  
 
@@ -71,7 +60,7 @@ function App() {
           </div>
           <div className='right'>
             {data.length > 0 
-              ? <TabView tabs={[{ name: "Viking Lotto", content: component }, { name: "Eurojackpot", content: component }]}/>
+              ? <TabView tabs={[{ name: "Viking Lotto", content: getContent(category) }, { name: "Eurojackpot", content: getContent(category) }]}/>
               : <Loader />
             }
           </div>
