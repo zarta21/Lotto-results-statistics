@@ -13,9 +13,12 @@ export const AppContext = createContext()
 function App() {
 
   const [data, setData] = useState([])
+  const [status, setStatus] = useState({ loading: false, error: false})
   const [blurBackground, setBlurBackground] = useState(true)
   const [activeTab, setActiveTab] = useState(0)
   const [category, setCategory] = useState("Home")
+
+  const abortControllerRef = useRef(null)
 
   useEffect(() => {
     let endpoint = ''
@@ -25,20 +28,48 @@ function App() {
       endpoint = "eurojackpot"
     }
 
-    fetch(`http://localhost:5500/${endpoint}`)
-      .then(res => {return res.json()})
-      .then(dbData => setData(dbData.sort((a, b) => {
-                    const dateA = new Date(a.date.split('/').reverse().join('/'))
-                    const dateB = new Date(b.date.split('/').reverse().join('/'))
+    const fetchData = async () => {
+      abortControllerRef.current?.abort()
+      abortControllerRef.current = new AbortController()
 
-                    return dateA - dateB
-                })))
-      .catch(err => alert(`Ups...\n${err.message}\n\nTry again later!`))
+      setStatus({ loading: true })
+      setCategory("Loading")
+
+      try {
+        const res = await fetch(`https://front-end-quiz.herokuapp.com/${endpoint}`, {
+          signal: abortControllerRef.current?.signal
+        })
+
+        const dbData = await res.json()
+        setData(dbData.sort((a, b) => {
+            const dateA = new Date(a.date.split('/').reverse().join('/'))
+            const dateB = new Date(b.date.split('/').reverse().join('/'))
+
+            return dateA - dateB
+        }))
+
+      } catch (err) {
+        if (err.name === "AbortError") {
+          return
+        }
+        setStatus({ error: err })
+        alert(`Ups...\n${err.message}\n\nTry again later!`)
+        setCategory("Error")
+      } finally {
+        setStatus({ loading: false})
+        setCategory(category)
+      }
+    }
+
+    fetchData()
+
   }, [activeTab])
 
 
   const getContent = (category) => {
   const content = {
+    "Loading": <Loader />,
+    "Error": <span>Ups... Try again later!</span>,
     "Home": <Home />,
     "Results": <Results />,
     "Statistics": <Statistics />,
@@ -59,10 +90,7 @@ function App() {
             <Sidebar />
           </div>
           <div className='right'>
-            {data.length > 0 
-              ? <TabView tabs={[{ name: "Viking Lotto", content: getContent(category) }, { name: "Eurojackpot", content: getContent(category) }]}/>
-              : <Loader />
-            }
+            <TabView tabs={[{ name: "Viking Lotto", content: getContent(category) }, { name: "Eurojackpot", content: getContent(category) }]}/>
           </div>
         </div>      
       </div>
