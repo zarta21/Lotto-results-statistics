@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useRef, useState } from 'react';
 import './App.scss';
 import Sidebar from './components/Sidebar/Sidebar';
 import TabView from './components/TabView/TabView';
